@@ -1,0 +1,236 @@
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f8f9fa;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* === CONTAINER === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* === HEADER === */
+header {
+  background: #2c3e50;
+  color: #ecf0f1;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.header-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #4c06ef url('image.jpg') center/cover no-repeat;
+  border: 3px solid #01bae8;
+  flex-shrink: 0;
+}
+.profile-info h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+}
+.profile-info p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+nav a {
+  color: #ecf0f1;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background: #3498db;
+  transition: width 0.3s;
+}
+nav a:hover {
+  color: #3498db;
+}
+nav a:hover::after { width: 100%; }
+
+/* === MAIN CONTENT === */
+main { padding: 2rem 0; }
+section { margin-bottom: 3rem; }
+h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  position: relative;
+}
+h2::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: #3498db;
+  display: block;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* === SCHOOLS GRID === */
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Limit to 3 cards per row on large screens */
+@media (min-width: 769px) {
+  .schools-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+.school-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(155, 9, 234, 0.08);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.school-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(210, 16, 16, 0.12);
+}
+.school-card h3 {
+  margin: 0.8rem 0;
+  color: #2c3e50;
+}
+.school-card p {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+
+/* === WORK EXPERIENCE === */
+.work-list {
+  display: grid;
+  gap: 1.5rem;
+}
+.work-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+.work-item h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+.work-item .company {
+  font-weight: 600;
+  color: #3498db;
+  font-size: 1.1rem;
+}
+.work-item .duration {
+  font-size: 0.9rem;
+  color: #95a5a6;
+  margin-bottom: 0.8rem;
+}
+
+/* === FOOTER === */
+footer {
+  background: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+/* === MOBILE MENU TOGGLE === */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  font-size: 1.5rem;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+
+.hamburger-line {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #ecf0f1;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation when menu is open */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { 
+    display: flex; 
+  }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #2c3e50;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  nav ul.show { display: flex; }
+  nav a { padding: 0.8rem 1rem; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .profile { width: 100%; justify-content: center; }
+  .profile-img {
+    width: 60px;
+    height: 60px;
+  }
+}
